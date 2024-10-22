@@ -1,4 +1,6 @@
 {% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
 {% block content %}
     <ul class="b-crumbs">
         <li><a href="/">Home</a></li>
@@ -12,12 +14,20 @@
                 <ul class="slides">
                     <li>
                         <a data-fancybox-group="prod" class="fancy-img" href="#">
-                            <img src="https://via.placeholder.com/250" alt="">
+                            {% if product.image and product.image.name %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="{% static 'img/default.png' %}" alt="Imagen por defecto">
+                            {% endif %}
                         </a>
                     </li>
                     <li>
                         <a data-fancybox-group="prod" class="fancy-img" href="#">
-                            <img src="https://via.placeholder.com/250" alt="">
+                            {% if product.image and product.image.name %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="{% static 'img/default.png' %}" alt="Imagen por defecto">
+                            {% endif %}
                         </a>
                     </li>
                 </ul>
@@ -28,10 +38,18 @@
             <div class="flexslider prod-thumbs" id="prod-thumbs">
                 <ul class="slides">
                     <li>
-                        <img src="https://via.placeholder.com/250" alt="">
+                        {% if product.image and product.image.name %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" alt="Imagen por defecto">
+                        {% endif %}
                     </li>
                     <li>
-                        <img src="https://via.placeholder.com/250" alt="">
+                        {% if product.image and product.image.name %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" alt="Imagen por defecto">
+                        {% endif %}
                     </li>
                 </ul>
             </div>
@@ -48,12 +66,11 @@
                 </p>
                 <p class="prod-rating-count">7</p>
             </div>
-            <p class="prod-categs"><a href="#">Polos</a></p>
-            <h1>PRODUCTO MUESTRA</h1>
+            <p class="prod-categs"><a href="#">{{product.category}}</a></p>
+            <h1>{{ product.name }}</h1>
             <div class="variations_form cart">
-                <p class="prod-price">$100</p>
-                <p class="prod-excerpt">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                    Vestibulum tortor quam, feugiat vitae, ultricies eget... 
+                <p class="prod-price">${{product.price}}</p>
+                <p class="prod-excerpt">{{ product.description }}
                     <a id="prod-showdesc" class="prod-excerpt-more" href="#">read more</a></p>
                 <div class="prod-add">
                     <form action="#" method="post">

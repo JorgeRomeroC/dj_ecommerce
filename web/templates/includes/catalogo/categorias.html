@@ -2,13 +2,15 @@
     <h3 class="widgettitle">Categorias</h3>
     <div class="section-sb-current">
         <ul class="section-sb-list">
+            {% for category in categories %}
             <li>
-                <a href="#">
-                    <span class="section-sb-label">Polos 
-                        <span class="count">3</span>
+                <a href="{% url 'web:product_per_category' category.id %}">
+                    <span class="section-sb-label">{{category.name}}
+                        <span class="count">{{category.product_set.all.count}}</span>
                     </span>
                 </a>
             </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
