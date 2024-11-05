@@ -1,4 +1,4 @@
-# Ecommerce Platform
+# Plataforma Ecommerce
 
 ![Django](https://img.shields.io/badge/Django-4.x-blue.svg) ![Python](https://img.shields.io/badge/Python-3.x-brightgreen.svg) ![License](https://img.shields.io/github/license/<usuario>/<repositorio>.svg)
 
@@ -15,8 +15,8 @@ Este es un proyecto de ecommerce desarrollado con Django, que incluye todas las 
 
 ## Requisitos
 
-- Python 3.8+
-- Django 4.x
+- Python 3.11
+- Django 4.2.9
 - PostgreSQL/MySQL (o cualquier base de datos soportada por Django)
 - Stripe/MercadoPago API para pagos (opcional)
 - Redis (opcional para caching)

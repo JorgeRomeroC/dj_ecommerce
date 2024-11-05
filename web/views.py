@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
+from web.cart import Cart
 from web.models import *
-
-
 
 def index(request):
     list_products = Product.objects.all()
@@ -49,3 +48,42 @@ def product_detail(request, product_id):
         'product': objProduct
     }
     return render(request, 'producto.html', context)
+
+
+def cart(request):
+    return render(request, 'carrito.html')
+
+
+def add_cart(request, product_id):
+    """Vista para añadir un producto al carrito"""
+    if request.method == 'POST':
+        # Intenta obtener 'quantity' y usa 1 como valor por defecto si no está presente
+        quantity = int(request.POST.get('quantity', 1))
+    else:
+        quantity = 1
+
+    objProduct = Product.objects.get(pk=product_id)  # Obtenemos el producto
+    cartProduct = Cart(request)  # Creamos una instancia del carrito
+    cartProduct.add_to_cart(objProduct, quantity)  # Añadimos el producto al carrito
+
+    if request.method == 'POST':
+        return redirect('/')
+
+    return render(request, 'carrito.html')
+
+
+def delete_cart(request, product_id):
+    """Vista para eliminar un producto del carrito"""
+    objProduct = Product.objects.get(pk=product_id)  # Obtenemos el producto
+    cartProduct = Cart(request)  # Creamos una instancia del carrito
+    cartProduct.delete_from_cart(objProduct)  # Eliminamos el producto del carrito
+
+    return render(request, 'carrito.html')
+
+
+def clear_cart(request):
+    """Vista para limpiar el carrito"""
+    cartProduct = Cart(request)  # Creamos una instancia del carrito
+    cartProduct.clear()  # Limpiamos el carrito
+
+    return render(request, 'carrito.html')

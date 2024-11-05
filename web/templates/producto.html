@@ -73,7 +73,7 @@
                 <p class="prod-excerpt">{{ product.description }}
                     <a id="prod-showdesc" class="prod-excerpt-more" href="#">read more</a></p>
                 <div class="prod-add">
-                    <form action="#" method="post">
+                    <form action="{% url 'web:add_cart' product.id %}" method="post">
                         {% csrf_token %}
                         <div class="variations">
                             <div class="variations-row">
@@ -91,7 +91,7 @@
                         <button type="submit" class="button"><i class="icon ion-android-cart"></i> Agregar al Carrito</button>
                         <p class="qnt-wrap prod-li-qnt">
                             <a href="#" class="qnt-plus prod-li-plus"><i class="icon ion-arrow-up-b"></i></a>
-                            <input type="text" name="cantidad" value="1">
+                            <input type="text" name="quantity" value="1">
                             <a href="#" class="qnt-minus prod-li-minus"><i class="icon ion-arrow-down-b"></i></a>
                         </p>
                     </form>
