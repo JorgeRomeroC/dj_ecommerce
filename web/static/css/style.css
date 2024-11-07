@@ -4736,6 +4736,7 @@ span.badge-1 {
   vertical-align: middle;
   padding: 15px 0 15px;
   position: relative;
+  float:right;
 }
 .prod-litems .prod-li-prices:after {
   clear: both;
@@ -7706,7 +7707,7 @@ div.product.product-type-grouped
 .cart-actions {
   background: #fff;
   padding: 20px 29px 24px;
-  margin: 0 0 80px;
+  margin: 0 0 0 0;
 }
 .cart-actions:after {
   clear: both;
@@ -7715,7 +7716,8 @@ div.product.product-type-grouped
 }
 .cart-actions p {
   line-height: 1.42857143;
-  margin: 0;
+  margin: 0 0 0 20px;
+  text-align: left;
 }
 .cart-update-btn {
   display: none !important;
@@ -7942,6 +7944,19 @@ div.product.product-type-grouped
   float: left;
   width: 29%;
   padding: 12px 0 0;
+}
+.alertas{
+  width: 100%;
+  text-align: center;
+  height: 20%;
+  background-color: #fff;
+  margin:0 auto;
+}
+.message{
+  text-align: center;
+}
+.coupon{
+
 }
 .cart-actions a.checkout-button {
   background-color: transparent;

@@ -44,30 +44,51 @@ def product_per_name(request):
 def product_detail(request, product_id):
     """Vista para mostrar detalle de un producto"""
     objProduct = get_object_or_404(Product, pk=product_id)
+
+    # Crear una instancia del carrito
+    cart = Cart(request)
+
+    # Obtener la cantidad actual del producto en el carrito, si existe
+    quantity = cart.cart.get(str(product_id), {}).get('quantity', 1)  # Por defecto, 1 si no está en el carrito
+
     context = {
-        'product': objProduct
+        'product': objProduct,
+        'quantity': quantity  # Pasar la cantidad al contexto
     }
     return render(request, 'producto.html', context)
 
 
+
 def cart(request):
-    return render(request, 'carrito.html')
+    cartProduct = Cart(request)
+
+    if request.method == 'POST':
+        coupon_code = request.POST.get('coupon')
+        if coupon_code:
+            success = cartProduct.apply_coupon(coupon_code)
+            if success:
+                message = "Cupón aplicado exitosamente."
+            else:
+                message = "El cupón ya fue aplicado o es inválido."
+        else:
+            message = "Por favor, ingresa un código de cupón."
+
+        return render(request, 'carrito.html', {'message': message, 'cart': cartProduct})
+
+    return render(request, 'carrito.html', {'cart': cartProduct})
 
 
 def add_cart(request, product_id):
-    """Vista para añadir un producto al carrito"""
+    """Vista para añadir o actualizar un producto en el carrito"""
     if request.method == 'POST':
-        # Intenta obtener 'quantity' y usa 1 como valor por defecto si no está presente
+        # Obtener la cantidad especificada en el formulario
         quantity = int(request.POST.get('quantity', 1))
-    else:
-        quantity = 1
 
-    objProduct = Product.objects.get(pk=product_id)  # Obtenemos el producto
-    cartProduct = Cart(request)  # Creamos una instancia del carrito
-    cartProduct.add_to_cart(objProduct, quantity)  # Añadimos el producto al carrito
+        objProduct = Product.objects.get(pk=product_id)  # Obtenemos el producto
+        cartProduct = Cart(request)  # Creamos una instancia del carrito
+        cartProduct.add_to_cart(objProduct, quantity)  # Añadimos o actualizamos el producto en el carrito
 
-    if request.method == 'POST':
-        return redirect('/')
+        return redirect('web:cart')  # Redirecciona al carrito después de actualizar
 
     return render(request, 'carrito.html')
 
@@ -85,5 +106,7 @@ def clear_cart(request):
     """Vista para limpiar el carrito"""
     cartProduct = Cart(request)  # Creamos una instancia del carrito
     cartProduct.clear()  # Limpiamos el carrito
-
+    # Asegurarnos de eliminar el código de cupón en la sesión
+    if 'coupon_code' in request.session:
+        del request.session['coupon_code']
     return render(request, 'carrito.html')

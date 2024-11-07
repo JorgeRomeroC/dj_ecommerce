@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from web.models import Product, Category
-
+from web.models import Product, Category, Coupon
 
 admin.site.register(Category)
+admin.site.register(Coupon)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
