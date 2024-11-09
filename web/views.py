@@ -3,6 +3,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from web.cart import Cart
 from web.models import *
 
+# views.py
+from datetime import datetime
+from django.shortcuts import render
+
+
 def index(request):
     list_products = Product.objects.all()
     list_categories = Category.objects.all()

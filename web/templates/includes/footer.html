@@ -1,13 +1,110 @@
 {% load static %}
 <!--footer-->
-    <div class="container-fluid blog-sb-widgets page-styling site-footer">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 widget align-center-tablet f-logo-wrap">
-                <a href="index.html" class="f-logo">
-                    <img src="{% static 'img/logo.png' %}" alt="">
-                </a>
-                <p>Ecommerce con Django  - Deverom</p>
-                <button class="btn callback">Contacto</button>
+<footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"> </i>
+                            <div class="cta-text">
+                                <h4> Dirección </h4>
+                                <span> Av Independencia 1988 <span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <div class="cta-text">
+                                <h4> Telefono</h4>
+                                <span> +56 952034094 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"> </i>
+                            <div class="cta-text">
+                                <h4> Email </h4>
+                                <span> mail@info.com </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row footer-row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"> <img src="{% static 'img/logo-free-bg.png' %}" class="img-fluid" alt="logo"> </a>
+                            </div>
+                            <div class="footer-text">
+                                <p> Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
+                                elit,Lorem ipsum dolor sit amet. </p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span> Siguenos</span>
+                                <a href="#"> <i class="fa fa-facebook-square" aria-hidden="true"></i> </i> </a>
+                                <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i> </i> </a>
+                                <a href="#"> <i class="fa fa-linkedin-square" aria-hidden="true"></i> </i> </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3> Categorias </h3>
+                            </div>
+                            <ul>
+                                <li> <a href="#"> Todas las Parrillas </a> </li>
+                                <li> <a href="#"> Parrillas a Gas </a> </li>
+                                <li> <a href="#"> Parrillas a Carbon</a> </li>
+                                <li> <a href="#"> Parrillas a Electricas</E></a> </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3> Subscribete </h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p> Don?t miss to subscribe to our new feeds, kindly fill the form below. </p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button> <i class="fa fa-paper-plane-o" aria-hidden="true"></i> </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                             <p> Copyright &copy; {% now "Y" %}, All Rights Reserved </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <div class="footer-menu">
+                            <ul>
+                                <li> <a href="#"> Home </a> </li>
+                                <li> <a href="#"> Terms </a> </li>
+                                <li> <a href="#"> Privacy </a> </li>
+                                <li> <a href="#"> Policy </a> </li>
+                                <li> <a href="#"> Contact </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

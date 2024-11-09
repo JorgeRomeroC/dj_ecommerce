@@ -24,7 +24,7 @@
                     -->
                         <div class="prod-li-prices">
                             <div class="prod-li-price-wrap">
-                                <p>Precio</p>
+                                <p>Precio Unid</p>
                                 <p class="prod-li-price">${{value.price}}</p>
                             </div>
                             <div class="prod-li-qnt-wrap">
@@ -62,12 +62,16 @@
         <div class="coupon">
             <form class="form-coupon" method="post" action="{% url 'web:cart' %}">
                 {% csrf_token %}
-                <input type="text" name="coupon" placeholder="Código de Cupón">
-                <input type="submit" class="button btn-descuento" value="Aplicar">
+                <div class="coupon-container">
+                    <input type="text" name="coupon" placeholder="Cupón de descuento">
+                    <button type="submit" class="button btn-descuento">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    </button>
+                </div>
             </form>
         </div>
         <div class="cart-collaterals">
-            <a href="{% url 'web:clear_cart' %}" class="checkout-button button">Limpiar Carrito</a>
+            <a href="{% url 'web:clear_cart' %}" class="checkout-button button">Borrar todo</a>
             <a href="" class="checkout-button button">Realizar Pedido</a>
             <div class="order-total">
                 <p class="cart-totals-ttl">Total</p>
