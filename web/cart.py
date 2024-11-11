@@ -12,6 +12,7 @@ class Cart:
             
         self.cart = cart
         self.totalAmount = float(totalAmount)
+        
 
     def add_to_cart(self, product, quantity):
         """Añadir o actualizar la cantidad de un producto en el carrito"""
@@ -33,6 +34,7 @@ class Cart:
             }
 
         self.save_cart()  # Guarda el carrito actualizado
+         
 
     def get_products(self):
         products = []

@@ -16,18 +16,19 @@
 
         <ul class="h-shop-links">
             <li class="h-search-btn" id="h-search-btn"><i class="ion-search"></i></li>
-            
+            {% include 'includes/header_carrito.html' %}
             <li class="h-shop-icon h-profile">
                 <a href="auth.html" title="My Account">
                     <i class="ion-android-person"></i>
                 </a>
                 <ul class="h-profile-links">
-                    <li><a href="/login">Login / Registro</a></li>
+                    <li><a href="/login">Ingresa</a></li>
+                    <li><a href="/login">Registrate</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </li>
 
-            {% include 'includes/header_carrito.html' %}
+
 
 
         </ul>
